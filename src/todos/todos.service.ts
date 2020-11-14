@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { CreateTodoDto } from './dto/create-todo-dto.dto';
 import { Todo } from './interfaces/todo.interface';
 
 @Injectable()
@@ -32,7 +33,7 @@ export class TodosService {
         return this.todos.find(todo => todo.id === Number(id));
     }
 
-    create(todo: Todo): Todo[] {
+    create(todo: CreateTodoDto): Todo[] {
         this.todos = [...this.todos, todo];
         return this.todos;
     }
