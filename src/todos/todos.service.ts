@@ -58,4 +58,15 @@ export class TodosService {
 
         return todoToUpdate;
     }
+
+    delete(id: string) : Todo[] | NotFoundException {
+        const nbOfTodosbeforeDelete = this.todos.length;
+        this.todos = [...this.todos.filter(t => t.id !== +id)];
+
+        if(this.todos.length >= nbOfTodosbeforeDelete) { 
+            return new NotFoundException('not found'); 
+        }
+
+        return this.todos;
+    }
 }
